@@ -1,0 +1,1 @@
+Fluent Nhibernate sample code
