@@ -8,12 +8,13 @@ namespace FluentNhibernateSampleApp.Domain
         {
             Ingredients = new List<Whiskey>();
         }
-		
-        public string Name { get; set; }
-        public int Age { get; set; }
-        public decimal Price { get; set; }
-        public string Country { get; set; }
-		
-        public List<Whiskey> Ingredients {get; set;}
+
+        public virtual int Id { get; set; }
+        public virtual string Name { get; set; }
+        public virtual int Age { get; set; }
+        public virtual decimal Price { get; set; }
+        public virtual string Country { get; set; }
+
+        public virtual List<Whiskey> Ingredients { get; set; }
     }
 }
