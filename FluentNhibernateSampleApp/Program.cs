@@ -9,6 +9,7 @@ using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 using FluentNhibernateSampleApp.Domain;
+using System.Reflection;
 
 namespace FluentNhibernateSampleApp
 {
@@ -34,8 +35,9 @@ namespace FluentNhibernateSampleApp
                 .Database(SQLiteConfiguration.Standard.UsingFile(DbFile).ShowSql())
 				.Mappings(m =>
                     m.FluentMappings.AddFromAssemblyOf<Program>())
+				.Mappings(m => m.FluentMappings.ExportTo(Directory.GetCurrentDirectory()))
                 .ExposeConfiguration(BuildSchema)
-                .BuildSessionFactory();
+				.BuildSessionFactory();
         }
 
         private static void BuildSchema(Configuration config)
