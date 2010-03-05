@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,6 +8,7 @@ using FluentNHibernate.Cfg.Db;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
+using FluentNhibernateSampleApp.Domain;
 
 namespace FluentNhibernateSampleApp
 {
@@ -17,16 +18,21 @@ namespace FluentNhibernateSampleApp
 
         static void Main(string[] args)
         {
-            var session = CreateSessionFactory();
-
-            
+            var sessionFactory = CreateSessionFactory();
+			var session = sessionFactory.OpenSession();
+            session.Save(new Whiskey());
+			sessionFactory.Close();
         }
 
         private static ISessionFactory CreateSessionFactory()
         {
+			// configure SQL Server						
+			//MsSqlConfiguration.MsSql2008.ConnectionString("WhiskeyDB")
+//			MsSqlConfiguration.MsSql2008.ConnectionString(c=> c.Database("").Server(""));
+			// can also do SQLiteConfiguration.Standard.InMemory();
             return Fluently.Configure()
-                .Database(SQLiteConfiguration.Standard.UsingFile(DbFile))
-                .Mappings(m =>
+                .Database(SQLiteConfiguration.Standard.UsingFile(DbFile).ShowSql())
+				.Mappings(m =>
                     m.FluentMappings.AddFromAssemblyOf<Program>())
                 .ExposeConfiguration(BuildSchema)
                 .BuildSessionFactory();
