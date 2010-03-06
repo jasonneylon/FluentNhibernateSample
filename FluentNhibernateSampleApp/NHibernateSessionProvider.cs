@@ -7,6 +7,8 @@ using FluentNHibernate.Cfg.Db;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 using System.IO;
+using FluentNHibernate.Automapping;
+using FluentNhibernateSampleApp.Domain;
 
 namespace FluentNhibernateSampleApp
 {
@@ -29,16 +31,20 @@ namespace FluentNhibernateSampleApp
 			
 			var databaseConfig = SQLiteConfiguration.Standard.UsingFile (DbFile).ShowSql ();
 			
-			Type t = Type.GetType ("Mono.Runtime");
-			if (t != null) {
+			Type monoRuntimeType = Type.GetType ("Mono.Runtime");
+			if (monoRuntimeType != null) {
 				databaseConfig = MonoSQLiteConfiguration.Standard.UsingFile (DbFile).ShowSql();
 				Console.WriteLine ("You are running with the Mono VM");
 			} 
 			
+			var model = AutoMap.AssemblyOf<Whiskey>().Where(t => t.Namespace.EndsWith("Domain"));
+			
 			return Fluently.Configure ()
 				.Database (databaseConfig)
-					.Mappings (m => m.FluentMappings.AddFromAssemblyOf<Program> ())
-					.Mappings (m => m.FluentMappings.ExportTo (Directory.GetCurrentDirectory ()))
+					.Mappings(m => m.AutoMappings.Add(model))
+					.Mappings(m=> m.AutoMappings.ExportTo(Directory.GetCurrentDirectory ()))
+//					.Mappings (m => m.FluentMappings.AddFromAssemblyOf<Program> ())
+//					.Mappings (m => m.FluentMappings.ExportTo (Directory.GetCurrentDirectory ()))
 					.ExposeConfiguration (BuildSchema)
 					.BuildSessionFactory ();
 		}

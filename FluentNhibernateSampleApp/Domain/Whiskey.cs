@@ -7,7 +7,7 @@ namespace FluentNhibernateSampleApp.Domain
     {
         public Whiskey()
         {
-            Ingredients = new List<Whiskey>();
+           // Ingredients = new List<Whiskey>();
         }
 
         public virtual Guid Id { get; set; }
@@ -17,6 +17,6 @@ namespace FluentNhibernateSampleApp.Domain
         public virtual string Country { get; set; }
 		public virtual string UnMappedProperty {get; set; }
 		
-        public virtual List<Whiskey> Ingredients { get; set; }
+      //  public virtual List<Whiskey> Ingredients { get; set; }
     }
 }
