@@ -26,13 +26,15 @@ namespace FluentNhibernateSampleApp
 			
 			var theMiddletonDistillary = new Distillary() { Name = "Middleton distillary", Address = {Town = "Cork"}};
 			var jamesons = new Whiskey () {Name = "Jamesons"};
+			var rare = new Whiskey () {Name = "Middleton rare"};
 			
 			theMiddletonDistillary.AddWhiskey(jamesons);
-			
+			theMiddletonDistillary.AddWhiskey(rare);			
 			var theGeorge = new Pub { Name="The George"};
-						
-			
 			theGeorge.Whiskies.Add(jamesons);
+			theGeorge.Whiskies.Add(rare);
+			var theVictoria = new Pub { Name="The Victoria"};
+			theVictoria.Whiskies.Add(jamesons);
 			
 			session.Save(theMiddletonDistillary);
 			

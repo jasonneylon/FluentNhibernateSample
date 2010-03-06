@@ -14,7 +14,7 @@ namespace FluentNhibernateSampleApp
 		{
 			Id(x=> x.Id).GeneratedBy.GuidComb();
 			Map(x=> x.Name);
-			HasMany(x=> x.Whiskies);
+			HasManyToMany(x=> x.Whiskies);
 		}
 	}
 }
