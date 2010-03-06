@@ -24,7 +24,7 @@ namespace FluentNhibernateSampleApp
 			var session = sessionFactory.OpenSession ();
 			Console.Out.WriteLine ("Saving some whiskey");
 			
-			var theMiddletonDistillary = new Distillary() { Name = "Middleton distillary"};
+			var theMiddletonDistillary = new Distillary() { Name = "Middleton distillary", Address = {Town = "Cork"}};
 			var jamesons = new Whiskey () {Name = "Jamesons"};
 			
 			theMiddletonDistillary.AddWhiskey(jamesons);
@@ -39,9 +39,9 @@ namespace FluentNhibernateSampleApp
 			session.Save (theGeorge);
 			session.Flush ();
 
-			
-			
-			
+			var newSession = sessionFactory.OpenSession();			
+			var loadedDistillary = newSession.Get<Distillary>(theMiddletonDistillary.Id) as Distillary;
+			Console.Out.WriteLine(loadedDistillary.Address.Town);
 			
 			
 			sessionFactory.Close ();

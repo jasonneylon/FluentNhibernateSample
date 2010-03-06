@@ -15,6 +15,10 @@ namespace FluentNhibernateSampleApp
 			Id(x=> x.Id).GeneratedBy.GuidComb();
 			Map(x=> x.Name);
 			HasMany(x=> x.Whiskies).AsSet().Cascade.All().Inverse();
+			Component(x=> x.Address, m => {
+				m.Map(x=> x.Town);
+				m.Map(x=> x.Country);
+			});
 		}
 	}
 }
