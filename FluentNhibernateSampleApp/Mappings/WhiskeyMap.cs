@@ -12,6 +12,7 @@ namespace FluentNhibernateSampleApp.Mappings
             Map(x => x.Age);
             Map(x => x.Country);
             Map(x => x.Price);
+			References(x=> x.Distillary);
 			
     /*        HasMany(x => x.Ingredients)
                 .Cascade.All(); */

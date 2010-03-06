@@ -37,14 +37,14 @@ namespace FluentNhibernateSampleApp
 				Console.WriteLine ("You are running with the Mono VM");
 			} 
 			
-			var model = AutoMap.AssemblyOf<Whiskey>().Where(t => t.Namespace.EndsWith("Domain"));
+			//var model = AutoMap.AssemblyOf<Whiskey>().Where(t => t.Namespace.EndsWith("Domain"));
 			
 			return Fluently.Configure ()
 				.Database (databaseConfig)
-					.Mappings(m => m.AutoMappings.Add(model))
-					.Mappings(m=> m.AutoMappings.ExportTo(Directory.GetCurrentDirectory ()))
-//					.Mappings (m => m.FluentMappings.AddFromAssemblyOf<Program> ())
-//					.Mappings (m => m.FluentMappings.ExportTo (Directory.GetCurrentDirectory ()))
+//					.Mappings(m => m.AutoMappings.Add(model))
+//					.Mappings(m=> m.AutoMappings.ExportTo(Directory.GetCurrentDirectory ()))
+					.Mappings (m => m.FluentMappings.AddFromAssemblyOf<Program> ())
+					.Mappings (m => m.FluentMappings.ExportTo (Directory.GetCurrentDirectory ()))
 					.ExposeConfiguration (BuildSchema)
 					.BuildSessionFactory ();
 		}

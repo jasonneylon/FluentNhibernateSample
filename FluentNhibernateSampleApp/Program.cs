@@ -23,8 +23,27 @@ namespace FluentNhibernateSampleApp
 			var sessionFactory = NHibernateSessionProvider.CreateSessionFactory();
 			var session = sessionFactory.OpenSession ();
 			Console.Out.WriteLine ("Saving some whiskey");
-			session.Save (new Whiskey ());
+			
+			var theMiddletonDistillary = new Distillary() { Name = "Middleton distillary"};
+			var jamesons = new Whiskey () {Name = "Jamesons"};
+			
+			theMiddletonDistillary.AddWhiskey(jamesons);
+			
+			var theGeorge = new Pub { Name="The George"};
+						
+			
+			theGeorge.Whiskies.Add(jamesons);
+			
+			session.Save(theMiddletonDistillary);
+			
+			session.Save (theGeorge);
 			session.Flush ();
+
+			
+			
+			
+			
+			
 			sessionFactory.Close ();
 		}
 	}

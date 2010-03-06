@@ -16,6 +16,9 @@ namespace FluentNhibernateSampleApp.Domain
         public virtual decimal Price { get; set; }
         public virtual string Country { get; set; }
 		public virtual string UnMappedProperty {get; set; }
+		public virtual Distillary Distillary {get;set;}
+		
+		
 		
       //  public virtual List<Whiskey> Ingredients { get; set; }
     }
