@@ -7,13 +7,13 @@ namespace FluentNhibernateSampleApp.Mappings
     {
         public WhiskeyMap()
         {
-            Id(x => x.Id);
+            Id(x => x.Id).GeneratedBy.GuidComb();
             Map(x => x.Name);
             Map(x => x.Age);
             Map(x => x.Country);
             Map(x => x.Price);
-            HasMany(x => x.Ingredients)
-                .Cascade.All();
+    /*        HasMany(x => x.Ingredients)
+                .Cascade.All(); */
         }
     }
 }

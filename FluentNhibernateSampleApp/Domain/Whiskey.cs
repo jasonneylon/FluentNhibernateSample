@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace FluentNhibernateSampleApp.Domain
@@ -9,7 +10,7 @@ namespace FluentNhibernateSampleApp.Domain
             Ingredients = new List<Whiskey>();
         }
 
-        public virtual int Id { get; set; }
+        public virtual Guid Id { get; set; }
         public virtual string Name { get; set; }
         public virtual int Age { get; set; }
         public virtual decimal Price { get; set; }
