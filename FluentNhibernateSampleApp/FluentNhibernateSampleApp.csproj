@@ -87,6 +87,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>libs\Mono.Data.SqliteClient.dll</HintPath>
     </Reference>
+    <Reference Include="nunit.framework, Version=2.5.3.9345, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libs\nunit.framework.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Whiskey.cs" />
@@ -95,6 +99,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MonoSqllite\MonoSQLiteConfiguration.cs" />
     <Compile Include="MonoSqllite\MonoSqliteDriver.cs" />
+    <Compile Include="Tests\WhiskeyMappingTest.cs" />
+    <Compile Include="NHibernateSessionProvider.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -106,5 +112,6 @@
   -->
   <ItemGroup>
     <Folder Include="MonoSqllite\" />
+    <Folder Include="Tests\" />
   </ItemGroup>
 </Project>
