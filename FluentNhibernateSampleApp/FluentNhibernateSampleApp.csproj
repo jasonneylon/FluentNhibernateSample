@@ -106,6 +106,9 @@
     <Compile Include="Domain\Distillary.cs" />
     <Compile Include="Mappings\DistillaryMap.cs" />
     <Compile Include="Domain\Address.cs" />
+    <Compile Include="Mappings\MoneyUserType.cs" />
+    <Compile Include="Domain\Money.cs" />
+    <Compile Include="Mappings\BaseImmutableUserType.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

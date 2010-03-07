@@ -10,6 +10,8 @@ Disadvantages
 * Encourages De-encapsultion
 * Certain rarely features not available so need to drop back to hbm .. (paramaterized user types?, collection flexibility?)
 
+* Draw Domain model
+
 * Configuring the database connection
 * Exporting the HBM
 * Basic mappings
@@ -20,6 +22,7 @@ Disadvantages
 * References/Has Many - ("Inverse on HasMany is an NHibernate term, and it means that the other end of the relationship is responsible for saving.")
 * HasManyToMany
 * Components
+* UserType
 * Testing with persistent specification
 * AutoMapping
 * Conventions??

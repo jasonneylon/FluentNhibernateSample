@@ -10,3 +10,5 @@ html_page_dumps
 Logs
 logs
 *.dat
+*.pidb
+*.userprefs

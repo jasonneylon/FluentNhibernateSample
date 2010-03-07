@@ -11,12 +11,10 @@ namespace FluentNhibernateSampleApp.Mappings
             Map(x => x.Name);
             Map(x => x.Age);
             Map(x => x.Country);
-            Map(x => x.Price);
+         //   Map(x => x.Price);
+			Map(x => x.Price).CustomType<MoneyUserType>();
 			References(x=> x.Distillary);
 			HasManyToMany(x=> x.Pubs);
-			
-    /*        HasMany(x => x.Ingredients)
-                .Cascade.All(); */
         }
     }
 }
