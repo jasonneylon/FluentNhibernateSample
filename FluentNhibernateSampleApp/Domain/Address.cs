@@ -1,7 +1,7 @@
 
 using System;
 
-namespace FluentNhibernateSampleApp
+namespace FluentNhibernateSampleApp.Domain
 {
 
 

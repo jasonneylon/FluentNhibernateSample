@@ -17,7 +17,7 @@ Disadvantages
 	- id (guids)
 	- property
 * Subclasses
-* References/Has Many
+* References/Has Many - ("Inverse on HasMany is an NHibernate term, and it means that the other end of the relationship is responsible for saving.")
 * HasManyToMany
 * Components
 * Testing with persistent specification
