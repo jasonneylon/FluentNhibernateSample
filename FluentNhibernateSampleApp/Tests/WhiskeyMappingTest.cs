@@ -19,7 +19,7 @@ namespace FluentNhibernateSampleApp
 			var sessionFactory = NHibernateSessionProvider.CreateSessionFactory();
 			new PersistenceSpecification<Whiskey>(sessionFactory.OpenSession())
 				.CheckProperty(x=> x.Name, "Ardbeg")
-				.CheckProperty(x=> x.UnMappedProperty, "whatever")
+                .CheckProperty(x=> x.Age, 15)
 					.VerifyTheMappings();
 		}
 	}

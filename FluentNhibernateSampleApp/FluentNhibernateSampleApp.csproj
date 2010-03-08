@@ -94,7 +94,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\ScotchWhiskey.cs" />
     <Compile Include="Domain\Whiskey.cs" />
+    <Compile Include="Mappings\ScotchMap.cs" />
     <Compile Include="Mappings\WhiskeyMap.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
