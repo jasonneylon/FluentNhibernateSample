@@ -5,18 +5,18 @@ namespace FluentNhibernateSampleApp
 {
 
 
-	public class Money
-	{
+    public class Money
+    {
 
-		public Money ()
-		{
-		}
-		
-public Money (decimal value)
-		{
-			Value = value;
-		}
+        public Money()
+        {
+        }
 
-		public decimal? Value {get;set;}
-	}
+        public Money(decimal value)
+        {
+            Value = value;
+        }
+
+        public decimal? Value { get; set; }
+    }
 }

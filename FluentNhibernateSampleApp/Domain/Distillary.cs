@@ -10,8 +10,13 @@ namespace FluentNhibernateSampleApp.Domain
 	public class Distillary
 	{
 
-		
-		public Distillary ()
+        public Distillary(string name) : this()
+        {
+            _name = name;
+        }
+
+
+	    protected Distillary ()
 		{
 			Whiskies = new HashSet<Whiskey>();
 			Address = new Address();
@@ -24,8 +29,13 @@ namespace FluentNhibernateSampleApp.Domain
 		}
 		
 		public virtual Guid Id {get;set;}
-		public virtual string Name { get;set;}
-		public virtual ICollection<Whiskey> Whiskies {get;set;}
+	    private string _name;
+	    public virtual string Name
+	    {
+	        get { return _name; }
+	    }
+
+	    public virtual ICollection<Whiskey> Whiskies {get;set;}
 		public virtual Address Address {get;set;}
 	}
 }

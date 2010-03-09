@@ -1,26 +1,20 @@
-
-using System;
 using NUnit.Framework;
 using FluentNHibernate.Testing;
 using FluentNhibernateSampleApp.Domain;
 
-
 namespace FluentNhibernateSampleApp
 {
-
-
-	[TestFixture()]
+	[TestFixture]
 	public class WhiskeyMappingTest
 	{
-
-		[Test()]
+        [Test]
 		public void CanMapWhiskey()
 		{
 			var sessionFactory = NHibernateSessionProvider.CreateSessionFactory();
 			new PersistenceSpecification<Whiskey>(sessionFactory.OpenSession())
-				.CheckProperty(x=> x.Name, "Ardbeg")
                 .CheckProperty(x=> x.Age, 15)
-					.VerifyTheMappings();
+                .CheckProperty(x => x.Name, "Ardbeg")
+                    .VerifyTheMappings();
 		}
 	}
 }

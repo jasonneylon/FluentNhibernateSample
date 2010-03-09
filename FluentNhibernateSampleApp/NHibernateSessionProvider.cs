@@ -1,7 +1,4 @@
-
-using System;
 using NHibernate;
-using FluentNHibernate;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate.Cfg;
@@ -12,30 +9,18 @@ using FluentNhibernateSampleApp.Domain;
 
 namespace FluentNhibernateSampleApp
 {
-
-
 	public class NHibernateSessionProvider
 	{
 		const string DbFile = "Whiskey.db";
 
-		public NHibernateSessionProvider ()
-		{
-		}
-		
-		public static ISessionFactory CreateSessionFactory ()
+	    public static ISessionFactory CreateSessionFactory ()
 		{
 			// configure SQL Server						
-			//MsSqlConfiguration.MsSql2008.ConnectionString("WhiskeyDB")
-//			MsSqlConfiguration.MsSql2008.ConnectionString(c=> c.Database("").Server(""));
+			// MsSqlConfiguration.MsSql2008.ConnectionString("WhiskeyDB")
+            // MsSqlConfiguration.MsSql2008.ConnectionString(c=> c.Database("").Server(""));
 			// can also do SQLiteConfiguration.Standard.InMemory();
 			
 			var databaseConfig = SQLiteConfiguration.Standard.UsingFile (DbFile).ShowSql ();
-			
-			Type monoRuntimeType = Type.GetType ("Mono.Runtime");
-			if (monoRuntimeType != null) {
-				databaseConfig = MonoSQLiteConfiguration.Standard.UsingFile (DbFile).ShowSql();
-				Console.WriteLine ("You are running with the Mono VM");
-			} 
 			
 			var autoMap = AutoMap.AssemblyOf<Whiskey>()
 				.Where(c => c.Namespace.EndsWith("Domain"))
