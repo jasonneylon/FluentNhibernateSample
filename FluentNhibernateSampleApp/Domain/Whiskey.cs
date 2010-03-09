@@ -12,7 +12,7 @@ namespace FluentNhibernateSampleApp.Domain
         public virtual Guid Id { get; set; }
         public virtual string Name { get; set; }
         public virtual int Age { get; set; }
-        public virtual Money Price { get; set; }
+        public virtual decimal Price { get; set; }
         public virtual string Country { get; set; }
 		public virtual string UnMappedProperty {get; set; }
 		public virtual Distillary Distillary {get;set;}

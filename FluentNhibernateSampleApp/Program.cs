@@ -12,8 +12,8 @@ namespace FluentNhibernateSampleApp
 			Console.Out.WriteLine ("Saving some whiskey");
 
             var theMiddletonDistillary = new Distillary("Middleton distillary") { Address = { Town = "Cork" } };
-			var jamesons = new Whiskey () {Name = "Jamesons", Price = new Money(17)};
-			var rare = new Whiskey () {Name = "Middleton rare", Price = new Money(110)};
+			var jamesons = new Whiskey () {Name = "Jamesons", Price = 17};
+			var rare = new Whiskey () {Name = "Middleton rare", Price = 110};
 			
 			theMiddletonDistillary.AddWhiskey(jamesons);
 			theMiddletonDistillary.AddWhiskey(rare);
