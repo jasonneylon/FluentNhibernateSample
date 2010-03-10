@@ -18,7 +18,7 @@ namespace FluentNhibernateSampleApp.Domain
 
 	    protected Distillary ()
 		{
-			Whiskies = new HashSet<Whiskey>();
+			Whiskies = new List<Whiskey>();
 			Address = new Address();
 		}
 		
@@ -35,7 +35,7 @@ namespace FluentNhibernateSampleApp.Domain
 	        get { return _name; }
 	    }
 
-	    public virtual ICollection<Whiskey> Whiskies {get;set;}
+	    public virtual IList<Whiskey> Whiskies {get;set;}
 		public virtual Address Address {get;set;}
 	}
 }

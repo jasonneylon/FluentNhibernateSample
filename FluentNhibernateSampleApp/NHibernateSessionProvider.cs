@@ -1,3 +1,8 @@
+using System;
+using FluentNHibernate.Conventions;
+using FluentNHibernate.Conventions.AcceptanceCriteria;
+using FluentNHibernate.Conventions.Inspections;
+using FluentNHibernate.Conventions.Instances;
 using NHibernate;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
@@ -19,28 +24,13 @@ namespace FluentNhibernateSampleApp
 			// MsSqlConfiguration.MsSql2008.ConnectionString("WhiskeyDB")
             // MsSqlConfiguration.MsSql2008.ConnectionString(c=> c.Database("").Server(""));
 			// can also do SQLiteConfiguration.Standard.InMemory();
-			
-			var databaseConfig = SQLiteConfiguration.Standard.UsingFile (DbFile).ShowSql ();
-			
-			var autoMap = AutoMap.AssemblyOf<Whiskey>()
-				.Where(c => c.Namespace.EndsWith("Domain"))
-				.Setup(s => s.IsComponentType = t => t == typeof(Address))
-					.Override<Distillary>(m => m.HasMany(x=> x.Whiskies).AsSet().Inverse().Cascade.All())
-                    ;
 
-		    Fluently.Configure()
-                .Database(SQLiteConfiguration.Standard.InMemory().ShowSql())
-		        .Mappings(m => m.FluentMappings.AddFromAssemblyOf<Whiskey>())
-		        .BuildSessionFactory();
-
-			return Fluently.Configure ()
-				.Database (databaseConfig)
-					//.Mappings(m => m.AutoMappings.Add(autoMap))
-					//.Mappings(m=> m.AutoMappings.ExportTo(Directory.GetCurrentDirectory ()))
-                    .Mappings(m => m.FluentMappings.AddFromAssemblyOf<Whiskey>())
-					.Mappings (m => m.FluentMappings.ExportTo (Directory.GetCurrentDirectory ()))
-					.ExposeConfiguration (BuildSchema)
-					.BuildSessionFactory ();
+            //var autoMap = AutoMap.AssemblyOf<Whiskey>()
+            //    .Where(x => x.Namespace.EndsWith("Domain"))
+            //    .Setup(s => s.IsComponentType = t => t == typeof (Address));
+            //    .Conventions.Add(new MoneyUserTypeConvention());
+            
+	        return null;
 		}
 
 		private static void BuildSchema (Configuration config)
@@ -53,6 +43,6 @@ namespace FluentNhibernateSampleApp
 			// and exports a database schema from it
 			new SchemaExport (config).Create (false, true);
 		}
-	
-	}
+
+    }
 }
