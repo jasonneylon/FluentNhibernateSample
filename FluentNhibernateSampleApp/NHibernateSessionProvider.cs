@@ -1,16 +1,7 @@
-using System;
-using FluentNHibernate.Conventions;
-using FluentNHibernate.Conventions.AcceptanceCriteria;
-using FluentNHibernate.Conventions.Inspections;
-using FluentNHibernate.Conventions.Instances;
 using NHibernate;
-using FluentNHibernate.Cfg;
-using FluentNHibernate.Cfg.Db;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 using System.IO;
-using FluentNHibernate.Automapping;
-using FluentNhibernateSampleApp.Domain;
 
 namespace FluentNhibernateSampleApp
 {
